@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.Networking;
 
 /**
  * Used to rotate the camera based on mouse movement. original script came from https://www.youtube.com/watch?v=blO039OzUZc
  */ 
-public class CameraMouseLook : NetworkBehaviour {
+public class CameraMouseLook : MonoBehaviour {
 	Vector2 mouseLook; //How much movement the camera has made
 	Vector2 smoothV; //this is used to make the movement less jerky. may only need minimal use of this in a twitchy shooter
 	public float sensitivity = 5.0f; // mouse sensitivity
@@ -25,11 +24,6 @@ public class CameraMouseLook : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(!isLocalPlayer)
-		{
-			Debug.Log ("Somehow im not the local player");
-			return;
-		}
 		//note: maybe look into the difference between get axis and get axis raw
 		Vector2 mouseDirection = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 

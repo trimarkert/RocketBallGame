@@ -12,6 +12,7 @@ public class ShootRocket : MonoBehaviour {
 	public Slider chargeSlider; // the slider that is associated with shooting the basketball.
 	public float chargeSpeed = 10.0f; //how fast to fill up bar for basketball shot.
 	public float maxForce = 350.0f; 
+	public Transform bulletSpawn;
 
 	// Update is called once per frame
 	void Update () 
@@ -19,7 +20,7 @@ public class ShootRocket : MonoBehaviour {
 		if( Input.GetButtonDown("Fire1"))
 		{
 			GameObject.Instantiate(rocketPrefab, 
-			                       this.transform.position, 
+			                       bulletSpawn.position, 
 			                       Quaternion.LookRotation(transform.forward));
 		}
 
@@ -35,7 +36,7 @@ public class ShootRocket : MonoBehaviour {
 		if(Input.GetButtonUp("Fire2"))
 		{
 			GameObject tempBall = (GameObject)GameObject.Instantiate(scoreBallPrefab,
-			                       this.transform.position,
+			                       bulletSpawn.position,
 			                       Quaternion.LookRotation(transform.forward));
 			Rigidbody tempRigid = tempBall.GetComponent<Rigidbody>();
 			if(tempRigid != null)

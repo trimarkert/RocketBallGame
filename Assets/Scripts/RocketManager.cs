@@ -24,7 +24,8 @@ public class RocketManager : MonoBehaviour {
 			{
 				rigidBod.AddExplosionForce(explosionForce, explosionPosition, radius, 3.0f);
 			}
-			GameObject.Destroy(this.gameObject);
+
 		}
+		GameObject.Destroy(this.gameObject);
 	}
 }

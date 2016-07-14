@@ -14,11 +14,25 @@ GameObject:
   - 81: {fileID: 8144920}
   - 114: {fileID: 11479548}
   - 114: {fileID: 11487826}
-  - 114: {fileID: 11491062}
   m_Layer: 9
   m_Name: PlayerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &127630
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 425828}
+  m_Layer: 9
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 5228209130450103505, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -30,7 +44,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 459646}
-  - 114: {fileID: 11442688}
   m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -53,6 +66,7 @@ GameObject:
   - 54: {fileID: 5413114}
   - 114: {fileID: 11410288}
   - 114: {fileID: 11438140}
+  - 114: {fileID: 11495504}
   m_Layer: 9
   m_Name: PlayerTemp
   m_TagString: Untagged
@@ -67,12 +81,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.77999997, z: -10.9099998}
+  m_LocalPosition: {x: 7.87249756, y: 1.5, z: 24.0876236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 451318}
   - {fileID: 459646}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &425828
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 127630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 451318}
   m_RootOrder: 0
 --- !u!4 &451318
 Transform:
@@ -83,7 +109,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 425828}
   m_Father: {fileID: 425350}
   m_RootOrder: 0
 --- !u!4 &459646
@@ -244,38 +271,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11442688
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 71
-    i1: 126
-    i2: 235
-    i3: 95
-    i4: 234
-    i5: 151
-    i6: 6
-    i7: 196
-    i8: 105
-    i9: 204
-    i10: 39
-    i11: 63
-    i12: 125
-    i13: 13
-    i14: 74
-    i15: 160
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &11479548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -306,6 +301,7 @@ MonoBehaviour:
   chargeSlider: {fileID: 11472302, guid: 756d8040214048c49bc1ab386c75a290, type: 2}
   chargeSpeed: 1.10000002
   maxForce: 1000
+  bulletSpawn: {fileID: 425828}
 --- !u!114 &11489148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,38 +321,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   grounded: 0
---- !u!114 &11491062
+--- !u!114 &11495504
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 124538}
+  m_GameObject: {fileID: 190270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 84f02987fe6a59f49a2690971969330f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 71
-    i1: 126
-    i2: 235
-    i3: 95
-    i4: 234
-    i5: 151
-    i6: 6
-    i7: 196
-    i8: 105
-    i9: 204
-    i10: 39
-    i11: 63
-    i12: 125
-    i13: 13
-    i14: 74
-    i15: 160
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  componentsToDisable:
+  - {fileID: 11489148}
+  - {fileID: 2096630}
+  - {fileID: 11479548}
+  - {fileID: 11487826}
+  - {fileID: 8144920}
 --- !u!124 &12415028
 Behaviour:
   m_ObjectHideFlags: 1
@@ -384,6 +365,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: componentsToDisable.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
@@ -454,7 +439,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPlayerAuthority
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_ServerOnly
@@ -473,6 +458,26 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: componentsToDisable.Array.data[0]
+      value: 
+      objectReference: {fileID: 11489148}
+    - target: {fileID: 0}
+      propertyPath: componentsToDisable.Array.data[1]
+      value: 
+      objectReference: {fileID: 2096630}
+    - target: {fileID: 0}
+      propertyPath: componentsToDisable.Array.data[2]
+      value: 
+      objectReference: {fileID: 11479548}
+    - target: {fileID: 0}
+      propertyPath: componentsToDisable.Array.data[3]
+      value: 
+      objectReference: {fileID: 11487826}
+    - target: {fileID: 0}
+      propertyPath: componentsToDisable.Array.data[4]
+      value: 
+      objectReference: {fileID: 8144920}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190270}
