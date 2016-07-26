@@ -302,6 +302,7 @@ MonoBehaviour:
   chargeSpeed: 1.10000002
   maxForce: 1000
   bulletSpawn: {fileID: 425828}
+  parentObject: {fileID: 190270}
 --- !u!114 &11489148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,7 +352,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190270}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 975540933e5a0ed4cae62963c98a5906, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .5
@@ -478,6 +479,15 @@ Prefab:
       propertyPath: componentsToDisable.Array.data[4]
       value: 
       objectReference: {fileID: 8144920}
+    - target: {fileID: 0}
+      propertyPath: parentObject
+      value: 
+      objectReference: {fileID: 190270}
+    - target: {fileID: 0}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 975540933e5a0ed4cae62963c98a5906,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190270}

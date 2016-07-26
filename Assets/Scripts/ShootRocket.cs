@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using System.Collections;
 
-//CAN EASILY BE A SIMPLE STATEMENT IN ANOTHER CLASS BUT NOT SURE WHERE YET
 public class ShootRocket : MonoBehaviour {
 
 	public float speed = 10.0f; // how fast rocket shoots
@@ -13,15 +12,18 @@ public class ShootRocket : MonoBehaviour {
 	public float chargeSpeed = 10.0f; //how fast to fill up bar for basketball shot.
 	public float maxForce = 350.0f; 
 	public Transform bulletSpawn;
+	public GameObject parentObject;
 
 	// Update is called once per frame
 	void Update () 
 	{
 		if( Input.GetButtonDown("Fire1"))
 		{
-			GameObject.Instantiate(rocketPrefab, 
+			GameObject tempRocket = GameObject.Instantiate(rocketPrefab, 
 			                       bulletSpawn.position, 
-			                       Quaternion.LookRotation(transform.forward));
+			                       Quaternion.LookRotation(transform.forward)) as GameObject;
+			//Simple one line fix! Don't forget to just put in Physics. and trying to find an appropriate function
+			Physics.IgnoreCollision(tempRocket.GetComponent<Collider>(), parentObject.GetComponent<CapsuleCollider>());
 		}
 
 		/**
@@ -35,9 +37,9 @@ public class ShootRocket : MonoBehaviour {
 		}
 		if(Input.GetButtonUp("Fire2"))
 		{
-			GameObject tempBall = (GameObject)GameObject.Instantiate(scoreBallPrefab,
+			GameObject tempBall = GameObject.Instantiate(scoreBallPrefab,
 			                       bulletSpawn.position,
-			                       Quaternion.LookRotation(transform.forward));
+			                       Quaternion.LookRotation(transform.forward)) as GameObject;
 			Rigidbody tempRigid = tempBall.GetComponent<Rigidbody>();
 			if(tempRigid != null)
 			{
@@ -45,6 +47,5 @@ public class ShootRocket : MonoBehaviour {
 			}
 			chargeSlider.value = 0f;
 		}
-
 	}
 }
