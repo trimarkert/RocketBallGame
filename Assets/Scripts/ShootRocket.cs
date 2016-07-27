@@ -6,7 +6,8 @@ using UnityEngine.Networking;
 public class ShootRocket : NetworkBehaviour {
 
 	public float speed = 10.0f; // how fast rocket shoots
-	public GameObject rocketPrefab; //prefab of rocket object
+	public GameObject redRocket; //prefab of rocket object
+	public GameObject blueRocket;
 	//Variables relating to the score ball
 	public GameObject scoreBallPrefab; //The object that will be spawned when we let go of the right mouse button
 	public Slider chargeSlider; // the slider that is associated with shooting the basketball.
@@ -15,28 +16,36 @@ public class ShootRocket : NetworkBehaviour {
 	public Transform bulletSpawn;
 	public GameObject myCamera;
 
+
+	public void ShootARocket(){
+		if(isLocalPlayer)
+		{
+			if(gameObject.layer == LayerMask.NameToLayer("BlueTeam"))
+			{
+				GameObject tempRocket = Instantiate(blueRocket, 
+				                                    myCamera.transform.position, 
+				                                    Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
+				//NetworkServer.SpawnWithClientAuthority(tempRocket, connectionToClient);
+			}
+			else{
+				GameObject tempRocket = Instantiate(redRocket, 
+				                                    myCamera.transform.position, 
+				                                    Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
+				//NetworkServer.SpawnWithClientAuthority(tempRocket, connectionToClient);
+			}
+		}
+	
+	}
+
+
 	// Update is called once per frame
 	void Update () 
 	{
 
 		if( Input.GetButtonDown("Fire1"))
 		{
-			if(isLocalPlayer)
-			{
-				GameObject tempRocket = Instantiate(rocketPrefab, 
-			                       myCamera.transform.position, 
-			                       Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
-				//Simple one line fix! Don't forget to just put in Physics. and trying to find an appropriate function
-
-				if(gameObject.layer == LayerMask.NameToLayer("BlueTeam"))
-				{
-					tempRocket.layer = LayerMask.NameToLayer("BlueTeam");
-				}
-				else{
-					tempRocket.layer = LayerMask.NameToLayer("RedTeam");
-				}
-
-			}
+				ShootARocket();
+			
 		}
 
 		/**

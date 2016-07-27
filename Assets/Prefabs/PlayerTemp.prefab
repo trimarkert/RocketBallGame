@@ -252,7 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  rocketPrefab: {fileID: 168424, guid: fe3b4e5504ab4c4469647338e6ae4a8b, type: 2}
+  redRocket: {fileID: 104670, guid: 4d97c8c75857ca64fba85562414c47e3, type: 2}
+  blueRocket: {fileID: 123134, guid: 2e323a81270cf9d4a8248a6bc0cbdaae, type: 2}
   scoreBallPrefab: {fileID: 190598, guid: 23f8fa6aea1e4e043a3c953181df7498, type: 2}
   chargeSlider: {fileID: 11472302, guid: 756d8040214048c49bc1ab386c75a290, type: 2}
   chargeSpeed: 1.10000002
@@ -303,7 +304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  rocketPrefab: {fileID: 168424, guid: fe3b4e5504ab4c4469647338e6ae4a8b, type: 2}
+  redRocket: {fileID: 0}
+  blueRocket: {fileID: 0}
   scoreBallPrefab: {fileID: 190598, guid: 23f8fa6aea1e4e043a3c953181df7498, type: 2}
   chargeSlider: {fileID: 11472302, guid: 756d8040214048c49bc1ab386c75a290, type: 2}
   chargeSpeed: 1.10000002
@@ -327,6 +329,7 @@ MonoBehaviour:
   - {fileID: 11487794}
   - {fileID: 8195360}
   hudObj: {fileID: 176808, guid: 756d8040214048c49bc1ab386c75a290, type: 2}
+  myColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11487794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,6 +362,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   grounded: 0
+  score: 0
 --- !u!124 &12476920
 Behaviour:
   m_ObjectHideFlags: 1
@@ -414,6 +418,14 @@ Prefab:
       propertyPath: hudObj
       value: 
       objectReference: {fileID: 176808, guid: 756d8040214048c49bc1ab386c75a290, type: 2}
+    - target: {fileID: 0}
+      propertyPath: redRocket
+      value: 
+      objectReference: {fileID: 104670, guid: 4d97c8c75857ca64fba85562414c47e3, type: 2}
+    - target: {fileID: 0}
+      propertyPath: blueRocket
+      value: 
+      objectReference: {fileID: 123134, guid: 2e323a81270cf9d4a8248a6bc0cbdaae, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 193818}
