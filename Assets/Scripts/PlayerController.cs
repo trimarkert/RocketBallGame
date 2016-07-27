@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Networking;
 
+
 public class PlayerController : NetworkBehaviour {
 
 	public float speed = 10.0f;
@@ -13,7 +14,7 @@ public class PlayerController : NetworkBehaviour {
 	public LayerMask groundCheckMask;
 	public bool grounded;
 
-
+	private Rigidbody rigid;
 
 
 	// Use this for initialization
@@ -25,6 +26,7 @@ public class PlayerController : NetworkBehaviour {
 		}
 		grounded = false;
 		Cursor.lockState = CursorLockMode.Locked;
+		rigid = GetComponent<Rigidbody>();
 	}
 
 	void FixedUpdate()
@@ -52,12 +54,13 @@ public class PlayerController : NetworkBehaviour {
 		//Basic movement and straffing logic. ez pz
 		float translation = Input.GetAxis("Vertical") * speed;
 		float straffe = Input.GetAxis("Horizontal") * speed;
+
 		transform.Translate (straffe * Time.deltaTime, 0, translation * Time.deltaTime);
 
 		//jump logic, also easy
 		if(Input.GetButtonDown("Jump") && grounded)
 		{
-			GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce);
+			rigid.AddForce(Vector3.up * jumpForce);
 		}
 
 		//This is mostly for editor, this should be updated to bring up a menu if we go that far

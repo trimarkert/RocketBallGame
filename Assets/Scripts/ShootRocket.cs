@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class ShootRocket : MonoBehaviour {
+public class ShootRocket : NetworkBehaviour {
 
 	public float speed = 10.0f; // how fast rocket shoots
 	public GameObject rocketPrefab; //prefab of rocket object
@@ -12,18 +13,30 @@ public class ShootRocket : MonoBehaviour {
 	public float chargeSpeed = 10.0f; //how fast to fill up bar for basketball shot.
 	public float maxForce = 350.0f; 
 	public Transform bulletSpawn;
-	public GameObject parentObject;
+	public GameObject myCamera;
 
 	// Update is called once per frame
 	void Update () 
 	{
+
 		if( Input.GetButtonDown("Fire1"))
 		{
-			GameObject tempRocket = GameObject.Instantiate(rocketPrefab, 
-			                       bulletSpawn.position, 
-			                       Quaternion.LookRotation(transform.forward)) as GameObject;
-			//Simple one line fix! Don't forget to just put in Physics. and trying to find an appropriate function
-			Physics.IgnoreCollision(tempRocket.GetComponent<Collider>(), parentObject.GetComponent<CapsuleCollider>());
+			if(isLocalPlayer)
+			{
+				GameObject tempRocket = Instantiate(rocketPrefab, 
+			                       myCamera.transform.position, 
+			                       Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
+				//Simple one line fix! Don't forget to just put in Physics. and trying to find an appropriate function
+
+				if(gameObject.layer == LayerMask.NameToLayer("BlueTeam"))
+				{
+					tempRocket.layer = LayerMask.NameToLayer("BlueTeam");
+				}
+				else{
+					tempRocket.layer = LayerMask.NameToLayer("RedTeam");
+				}
+
+			}
 		}
 
 		/**
@@ -39,11 +52,18 @@ public class ShootRocket : MonoBehaviour {
 		{
 			GameObject tempBall = GameObject.Instantiate(scoreBallPrefab,
 			                       bulletSpawn.position,
-			                       Quaternion.LookRotation(transform.forward)) as GameObject;
+			                       Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
 			Rigidbody tempRigid = tempBall.GetComponent<Rigidbody>();
 			if(tempRigid != null)
 			{
 				tempRigid.AddForce(tempBall.transform.forward * chargeSlider.value * maxForce);
+			}
+			if(gameObject.layer == LayerMask.NameToLayer("BlueTeam"))
+			{
+				tempBall.layer = LayerMask.NameToLayer("BlueTeam");
+			}
+			else{
+				tempBall.layer = LayerMask.NameToLayer("RedTeam");
 			}
 			chargeSlider.value = 0f;
 		}
