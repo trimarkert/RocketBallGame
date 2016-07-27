@@ -14,10 +14,10 @@ public class ScoreManager : MonoBehaviour {
 		teamTwoBasket = GameObject.Find("TeamTwoBucket").GetComponent<BasketManager>();
 	}
 	void Update () {
-//		scoreText.text = "Team One: " + teamOneBasket.getScore() + " Team Two: " + teamTwoBasket.getScore();
-//		if(teamOneBasket.getScore() >= maxScore || teamTwoBasket.getScore() >= maxScore)
-//		{
-//			enabled = false;
-//		}
+		scoreText.text = "Team One: " + teamOneBasket.getScore() + " Team Two: " + teamTwoBasket.getScore();
+		if(teamOneBasket.getScore() >= maxScore || teamTwoBasket.getScore() >= maxScore)
+		{
+			enabled = false;
+		}
 	}
 }

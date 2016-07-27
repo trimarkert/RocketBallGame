@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Score
   - Basket
-  - Spawner
   layers:
   - Default
   - TransparentFX

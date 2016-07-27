@@ -14,9 +14,6 @@ public class PlayerSetup : NetworkBehaviour {
 	Camera sceneCamera;
 	public GameObject hudObj;
 
-	[SyncVar(hook = "OnColorChange")]
-	public Color myColor;
-
 	void Start () {
 
 		//Logic to turn off unnecessary components
@@ -33,25 +30,18 @@ public class PlayerSetup : NetworkBehaviour {
 			{
 				sceneCamera.gameObject.SetActive(false);
 			}
-			GameObject hudInstance = GameObject.Instantiate(hudObj) as GameObject;
-			GetComponent<ShootRocket>().chargeSlider = hudInstance.GetComponentInChildren<Slider>();
 		}
-	}
-
-	void Update()
-	{
-		GetComponent<Renderer>().material.color = myColor;
-		if(myColor == Color.red)
+		if(isLocalPlayer)
 		{
-			gameObject.layer = LayerMask.NameToLayer("RedTeam");
+				gameObject.layer = LayerMask.NameToLayer("BlueTeam");
+				gameObject.GetComponent<Renderer>().material.color = Color.blue;
+				GameObject tempHUD = GameObject.Instantiate(hudObj) as GameObject;
+				GetComponent<ShootRocket>().chargeSlider = tempHUD.GetComponentInChildren<Slider>();
 		}
 		else{
-			gameObject.layer = LayerMask.NameToLayer("BlueTeam");
+				gameObject.layer = LayerMask.NameToLayer("RedTeam");
+				gameObject.GetComponent<Renderer>().material.color = Color.red;
 		}
-	}
 
-	public void OnColorChange(Color newColor){
-		myColor = newColor;
 	}
-
 }

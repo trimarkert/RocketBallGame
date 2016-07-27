@@ -13,15 +13,9 @@ public class PlayerController : NetworkBehaviour {
 	public float groundCheckRadius;
 	public LayerMask groundCheckMask;
 	public bool grounded;
-	[SyncVar]
-	public int score = 0;
 
 	private Rigidbody rigid;
 
-	public void addScore()
-	{
-		score++;
-	}
 
 	// Use this for initialization
 	void Start () 
