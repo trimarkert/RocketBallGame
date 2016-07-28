@@ -20,15 +20,13 @@ public class ShootRocket : NetworkBehaviour {
 	[Command]
 	public void Cmd_ShootARocket(){
 			Debug.Log("Made it to command");
-			if(gameObject.layer == LayerMask.NameToLayer("BlueTeam"))
+			if(spawningPlayer.layer == LayerMask.NameToLayer("BlueTeam"))
 			{
 				GameObject tempRocket = Instantiate(blueRocket, 
 				                                    myCamera.transform.position, 
 				                                    Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
 				//NetworkServer.SpawnWithClientAuthority(tempRocket, connectionToClient);
-				Debug.Log ("Created tempRocket");
-				Debug.Log (tempRocket.ToString());
-				Debug.Log ("is Client comes back as" + isClient);
+
 				NetworkServer.Spawn(tempRocket);
 			}
 			else{
@@ -36,12 +34,13 @@ public class ShootRocket : NetworkBehaviour {
 				                                    myCamera.transform.position, 
 				                                    Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
 				//NetworkServer.SpawnWithClientAuthority(tempRocket, connectionToClient);
-				Debug.Log ("Created tempRocket");
-				Debug.Log (tempRocket.ToString());
-				Debug.Log ("is Client comes back as" + isClient);
 				NetworkServer.Spawn(tempRocket);
 			}
 	
+	}
+	void Start()
+	{
+		spawningPlayer = this.gameObject;
 	}
 
 	// Update is called once per frame
