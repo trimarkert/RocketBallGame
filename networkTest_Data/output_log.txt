@@ -6,29 +6,76 @@ Direct3D:
     Vendor:   NVIDIA
     VRAM:     978 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.228 seconds
+Platform assembly: C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.226 seconds
 desktop: 1920x1080 60Hz; virtual: 3280x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-Platform assembly: C:\Users\Tristan\RocketJump\RocketJumpPractice\networkTest_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Tristan\Documents\GitHub\RocketBallGame\networkTest_Data\Managed\System.dll (this message is harmless)
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 1ba8 -> priority: 1 
-Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:7777}
-aissp: time {59541} lastRecTime {57074} DisTme {2000}, rtt {0} 
+  Thread -> id: 1e50 -> priority: 1 
+The starting force is: 236.904
  
-(Filename:  Line: 1848)
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 
-UNet Client Disconnect Error: Timeout
+The starting force is: 583.1469
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 619.5934
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 783.6036
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 656.04
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 637.8167
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 1000
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 637.8167
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 801.8273
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 710.7094
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 1000
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 1000
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 637.8167
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+The starting force is: 1000
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
 

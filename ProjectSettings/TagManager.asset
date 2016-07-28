@@ -7,6 +7,7 @@ TagManager:
   - Score
   - Basket
   - Spawner
+  - HUD
   layers:
   - Default
   - TransparentFX

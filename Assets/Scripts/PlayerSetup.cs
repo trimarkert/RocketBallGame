@@ -33,13 +33,17 @@ public class PlayerSetup : NetworkBehaviour {
 			{
 				sceneCamera.gameObject.SetActive(false);
 			}
-			GameObject hudInstance = GameObject.Instantiate(hudObj) as GameObject;
+			//First check to see if this client already has a hud created (aka they disconnected and reconnected)
+			GameObject hudInstance;
+			if(GameObject.FindWithTag("HUD") == null)
+			{
+				hudInstance = GameObject.Instantiate(hudObj) as GameObject;
+			}
+			else
+				hudInstance = GameObject.FindWithTag("HUD");
 			GetComponent<ShootRocket>().chargeSlider = hudInstance.GetComponentInChildren<Slider>();
 		}
-	}
-
-	void Update()
-	{
+		//Logic to set teams
 		GetComponent<Renderer>().material.color = myColor;
 		if(myColor == Color.red)
 		{
@@ -48,6 +52,7 @@ public class PlayerSetup : NetworkBehaviour {
 		else{
 			gameObject.layer = LayerMask.NameToLayer("BlueTeam");
 		}
+
 	}
 
 	public void OnColorChange(Color newColor){

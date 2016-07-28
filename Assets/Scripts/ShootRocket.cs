@@ -10,6 +10,8 @@ public class ShootRocket : NetworkBehaviour {
 	public GameObject blueRocket;
 	//Variables relating to the score ball
 	public GameObject scoreBallPrefab; //The object that will be spawned when we let go of the right mouse button
+	public GameObject scoreBallBluePrefab; //The object that will be spawned when we let go of the right mouse button
+	public GameObject scoreBallRedPrefab; //The object that will be spawned when we let go of the right mouse button
 	public Slider chargeSlider; // the slider that is associated with shooting the basketball.
 	public float chargeSpeed = 10.0f; //how fast to fill up bar for basketball shot.
 	public float maxForce = 350.0f; 
@@ -18,8 +20,8 @@ public class ShootRocket : NetworkBehaviour {
 	public GameObject spawningPlayer; // Reference to self. not sure if this will work
 
 	[Command]
-	public void Cmd_ShootARocket(){
-			Debug.Log("Made it to command");
+	public void Cmd_ShootARocket()
+	{
 			if(spawningPlayer.layer == LayerMask.NameToLayer("BlueTeam"))
 			{
 				GameObject tempRocket = Instantiate(blueRocket, 
@@ -33,10 +35,50 @@ public class ShootRocket : NetworkBehaviour {
 				GameObject tempRocket = Instantiate(redRocket, 
 				                                    myCamera.transform.position, 
 				                                    Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
-				//NetworkServer.SpawnWithClientAuthority(tempRocket, connectionToClient);
+//				//NetworkServer.SpawnWithClientAuthority(tempRocket, connectionToClient);
+//			Debug.Log ("The slider is at " + chargeSlider.value);
+//			//tempRocket.GetComponent<Rigidbody>().AddForce(tempRocket.transform.forward * chargeSlider.value * maxForce);
 				NetworkServer.Spawn(tempRocket);
+				
 			}
 	
+	}
+	[Command]
+	public void Cmd_ShootScoreBall(float myCharge)
+	{
+		ShootRocket spawningScript = spawningPlayer.GetComponent<ShootRocket>();
+		//spawningPlayer.GetComponent<ShootRocket>().bulletSpawn.position
+		//Slider spawningSlider = spawningPlayer.GetComponent<ShootRocket>().chargeSlider;
+
+
+//		scoreBallPrefab.GetComponent<BallManager>().startingForce = myCharge * maxForce;
+//		GameObject tempBall = GameObject.Instantiate(scoreBallPrefab,
+//		                                             spawningScript.myCamera.transform.position,
+//		                                             Quaternion.LookRotation(spawningScript.myCamera.transform.forward)) as GameObject;
+
+
+		//tempBall.GetComponent<BallManager>().startingForce = chargeSlider.value * maxForce;
+		if(spawningPlayer.layer == LayerMask.NameToLayer("BlueTeam"))
+		{
+//			Debug.Log ("We should really be here");
+//			tempBall.layer = LayerMask.NameToLayer("BlueTeam");
+			scoreBallBluePrefab.GetComponent<BallManager>().startingForce = myCharge * maxForce;
+			GameObject tempBall = GameObject.Instantiate(scoreBallBluePrefab,
+			                                             spawningScript.myCamera.transform.position,
+			                                             Quaternion.LookRotation(spawningScript.myCamera.transform.forward)) as GameObject;
+			NetworkServer.Spawn(tempBall);
+		}
+		else{
+			scoreBallRedPrefab.GetComponent<BallManager>().startingForce = myCharge * maxForce;
+			GameObject tempBall = GameObject.Instantiate(scoreBallRedPrefab,
+			                                             spawningScript.myCamera.transform.position,
+			                                             Quaternion.LookRotation(spawningScript.myCamera.transform.forward)) as GameObject;
+			NetworkServer.Spawn(tempBall);
+		}
+		//tempBall.GetComponent<Rigidbody>().AddForce(tempBall.transform.forward * chargeSlider.value * maxForce);
+		//NetworkServer.SpawnWithClientAuthority(tempBall, connectionToClient);
+		//tempBall.GetComponent<Rigidbody>().AddForce(tempBall.transform.forward * chargeSlider.value * maxForce);
+		//NetworkServer.Spawn(tempBall);
 	}
 	void Start()
 	{
@@ -53,9 +95,7 @@ public class ShootRocket : NetworkBehaviour {
 
 		if( Input.GetButtonDown("Fire1"))
 		{
-			Debug.Log("Got to fireButton");
-			Cmd_ShootARocket();
-			
+			Cmd_ShootARocket();	
 		}
 
 		/**
@@ -69,21 +109,7 @@ public class ShootRocket : NetworkBehaviour {
 		}
 		if(Input.GetButtonUp("Fire2"))
 		{
-			GameObject tempBall = GameObject.Instantiate(scoreBallPrefab,
-			                       bulletSpawn.position,
-			                       Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
-			Rigidbody tempRigid = tempBall.GetComponent<Rigidbody>();
-			if(tempRigid != null)
-			{
-				tempRigid.AddForce(tempBall.transform.forward * chargeSlider.value * maxForce);
-			}
-			if(gameObject.layer == LayerMask.NameToLayer("BlueTeam"))
-			{
-				tempBall.layer = LayerMask.NameToLayer("BlueTeam");
-			}
-			else{
-				tempBall.layer = LayerMask.NameToLayer("RedTeam");
-			}
+			Cmd_ShootScoreBall(chargeSlider.value);
 			chargeSlider.value = 0f;
 		}
 	}

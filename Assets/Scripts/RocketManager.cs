@@ -8,11 +8,6 @@ public class RocketManager : NetworkBehaviour {
 	public float explosionForce = 10.0f; // value used for explosion force
 	public float radius = 10.0f; // the radius of the explosion after the rocket has hit something.
 
-	public void DontCollide(CapsuleCollider targetCollider)
-	{
-		Physics.IgnoreCollision(GetComponent<Collider>(), targetCollider);
-	}
-
 	// Update is called once per frame
 	void Update () 
 	{
@@ -25,7 +20,6 @@ public class RocketManager : NetworkBehaviour {
 		foreach(Collider hit in colliders)
 		{
 			Rigidbody rigidBod = hit.GetComponent<Rigidbody>();
-			Debug.Log (rigidBod != null);
 			if(rigidBod != null)
 			{
 				rigidBod.AddExplosionForce(explosionForce, explosionPosition, radius, 3.0f);

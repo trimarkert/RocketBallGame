@@ -251,15 +251,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e7dce200d16364e8c826ebd657ac85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 18
   redRocket: {fileID: 104670, guid: 4d97c8c75857ca64fba85562414c47e3, type: 2}
   blueRocket: {fileID: 123134, guid: 2e323a81270cf9d4a8248a6bc0cbdaae, type: 2}
   scoreBallPrefab: {fileID: 190598, guid: 23f8fa6aea1e4e043a3c953181df7498, type: 2}
-  chargeSlider: {fileID: 11472302, guid: 756d8040214048c49bc1ab386c75a290, type: 2}
+  scoreBallBluePrefab: {fileID: 190598, guid: edfdd522c2bfc1d418d08ef2b388d008, type: 2}
+  scoreBallRedPrefab: {fileID: 190598, guid: 5514d8b72ddf9304eb1c65a5b180198e, type: 2}
+  chargeSlider: {fileID: 0}
   chargeSpeed: 1.10000002
   maxForce: 1000
   bulletSpawn: {fileID: 446860}
   myCamera: {fileID: 113970}
+  spawningPlayer: {fileID: 0}
 --- !u!114 &11457940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,11 +310,14 @@ MonoBehaviour:
   redRocket: {fileID: 0}
   blueRocket: {fileID: 0}
   scoreBallPrefab: {fileID: 190598, guid: 23f8fa6aea1e4e043a3c953181df7498, type: 2}
+  scoreBallBluePrefab: {fileID: 0}
+  scoreBallRedPrefab: {fileID: 0}
   chargeSlider: {fileID: 11472302, guid: 756d8040214048c49bc1ab386c75a290, type: 2}
   chargeSpeed: 1.10000002
   maxForce: 1000
   bulletSpawn: {fileID: 446860}
   myCamera: {fileID: 0}
+  spawningPlayer: {fileID: 0}
 --- !u!114 &11481768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -426,6 +432,26 @@ Prefab:
       propertyPath: blueRocket
       value: 
       objectReference: {fileID: 123134, guid: 2e323a81270cf9d4a8248a6bc0cbdaae, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: speed
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: chargeSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: scoreBallBluePrefab
+      value: 
+      objectReference: {fileID: 190598, guid: edfdd522c2bfc1d418d08ef2b388d008, type: 2}
+    - target: {fileID: 0}
+      propertyPath: scoreBallRedPrefab
+      value: 
+      objectReference: {fileID: 190598, guid: 5514d8b72ddf9304eb1c65a5b180198e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 193818}

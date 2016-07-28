@@ -19,6 +19,7 @@ public class CameraMouseLook : MonoBehaviour {
 	void Start () 
 	{
 		playerCharacter = this.transform.parent.gameObject;	
+		transform.localRotation = playerCharacter.transform.rotation;
 	}
 
 	// Update is called once per frame
