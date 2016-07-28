@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class RocketManager : MonoBehaviour {
+public class RocketManager : NetworkBehaviour {
 
 	public float speed = 10.0f; 
 	public float explosionForce = 10.0f; // value used for explosion force
@@ -15,6 +16,8 @@ public class RocketManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		if(!base.isServer)
+			return;
 		transform.position += transform.forward * speed * Time.deltaTime;
 	}
 	void OnCollisionEnter(Collision collision){

@@ -15,36 +15,47 @@ public class ShootRocket : NetworkBehaviour {
 	public float maxForce = 350.0f; 
 	public Transform bulletSpawn;
 	public GameObject myCamera;
+	public GameObject spawningPlayer; // Reference to self. not sure if this will work
 
-
-	public void ShootARocket(){
-		if(isLocalPlayer)
-		{
+	[Command]
+	public void Cmd_ShootARocket(){
+			Debug.Log("Made it to command");
 			if(gameObject.layer == LayerMask.NameToLayer("BlueTeam"))
 			{
 				GameObject tempRocket = Instantiate(blueRocket, 
 				                                    myCamera.transform.position, 
 				                                    Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
 				//NetworkServer.SpawnWithClientAuthority(tempRocket, connectionToClient);
+				Debug.Log ("Created tempRocket");
+				Debug.Log (tempRocket.ToString());
+				Debug.Log ("is Client comes back as" + isClient);
+				NetworkServer.Spawn(tempRocket);
 			}
 			else{
 				GameObject tempRocket = Instantiate(redRocket, 
 				                                    myCamera.transform.position, 
 				                                    Quaternion.LookRotation(myCamera.transform.forward)) as GameObject;
 				//NetworkServer.SpawnWithClientAuthority(tempRocket, connectionToClient);
+				Debug.Log ("Created tempRocket");
+				Debug.Log (tempRocket.ToString());
+				Debug.Log ("is Client comes back as" + isClient);
+				NetworkServer.Spawn(tempRocket);
 			}
-		}
 	
 	}
-
 
 	// Update is called once per frame
 	void Update () 
 	{
+		if(!isLocalPlayer)
+		{
+			return;
+		}
 
 		if( Input.GetButtonDown("Fire1"))
 		{
-				ShootARocket();
+			Debug.Log("Got to fireButton");
+			Cmd_ShootARocket();
 			
 		}
 
