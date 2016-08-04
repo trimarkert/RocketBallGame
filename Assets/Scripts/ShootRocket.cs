@@ -16,7 +16,8 @@ public class ShootRocket : NetworkBehaviour {
 	public float chargeSpeed = 10.0f; //how fast to fill up bar for basketball shot.
 	public float maxForce = 350.0f; 
 	public Transform bulletSpawn;
-	public GameObject myCamera;
+	public Camera myCamera;
+	public GameObject cameraObject;
 	public GameObject spawningPlayer; // Reference to self. not sure if this will work
 
 	[Command]
@@ -63,17 +64,24 @@ public class ShootRocket : NetworkBehaviour {
 //			Debug.Log ("We should really be here");
 //			tempBall.layer = LayerMask.NameToLayer("BlueTeam");
 			scoreBallBluePrefab.GetComponent<BallManager>().startingForce = myCharge * maxForce;
+			Debug.Log ("The camera forward vecotr is" + cameraObject.transform.forward);
 			GameObject tempBall = GameObject.Instantiate(scoreBallBluePrefab,
 			                                             spawningScript.myCamera.transform.position,
-			                                             Quaternion.LookRotation(spawningScript.myCamera.transform.forward)) as GameObject;
+			                                             Quaternion.LookRotation(cameraObject.transform.forward)) as GameObject;
 			NetworkServer.Spawn(tempBall);
+			GameObject spawnedBall = NetworkServer.FindLocalObject(tempBall.GetComponent<NetworkIdentity>().netId);
+			spawnedBall.GetComponent<Rigidbody>().AddForce(cameraObject.transform.forward * myCharge * maxForce);
 		}
 		else{
 			scoreBallRedPrefab.GetComponent<BallManager>().startingForce = myCharge * maxForce;
+			Debug.Log ("The camera forward vecotr is" + cameraObject.transform.forward);
 			GameObject tempBall = GameObject.Instantiate(scoreBallRedPrefab,
 			                                             spawningScript.myCamera.transform.position,
-			                                             Quaternion.LookRotation(spawningScript.myCamera.transform.forward)) as GameObject;
+			                                             Quaternion.LookRotation(cameraObject.transform.forward)) as GameObject;
 			NetworkServer.Spawn(tempBall);
+			GameObject spawnedBall = NetworkServer.FindLocalObject(tempBall.GetComponent<NetworkIdentity>().netId);
+			spawnedBall.GetComponent<Rigidbody>().AddForce(cameraObject.transform.forward * myCharge * maxForce);
+
 		}
 		//tempBall.GetComponent<Rigidbody>().AddForce(tempBall.transform.forward * chargeSlider.value * maxForce);
 		//NetworkServer.SpawnWithClientAuthority(tempBall, connectionToClient);
@@ -83,6 +91,8 @@ public class ShootRocket : NetworkBehaviour {
 	void Start()
 	{
 		spawningPlayer = this.gameObject;
+		myCamera = spawningPlayer.GetComponentInChildren<Camera>();
+		cameraObject = myCamera.gameObject;
 	}
 
 	// Update is called once per frame

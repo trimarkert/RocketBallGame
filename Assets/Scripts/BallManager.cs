@@ -7,12 +7,12 @@ public class BallManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if(GetComponent<Rigidbody>() != null)
-		{
-			Debug.Log("The starting force is: " + startingForce);
-			Debug.Log ();
-			gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * startingForce);
-		}
+//		if(GetComponent<Rigidbody>() != null)
+//		{
+//			Debug.Log("The starting force is: " + startingForce);
+//			Debug.Log("My forward vecotor is" + transform.forward);
+//			gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * startingForce);
+//		}
 	}
 	
 	public void AddAForce(float forceAmount)
